@@ -30,6 +30,8 @@ class MasterClass extends Model
         return [
             'class_date' => 'date',
             'price' => 'decimal:2',
+            'start_time' => 'datetime:H:i',
+            'end_time' => 'datetime:H:i',
         ];
     }
 
@@ -58,8 +60,8 @@ class MasterClass extends Model
         return sprintf(
             '%s, %s-%s',
             $this->class_date->format('d.m.Y'),
-            substr($this->start_time, 0, 5),
-            substr($this->end_time, 0, 5)
+            $this->start_time->format('H:i'),
+            $this->end_time->format('H:i')
         );
     }
 
@@ -70,12 +72,12 @@ class MasterClass extends Model
 
     public function getStartsAtAttribute(): Carbon
     {
-        return Carbon::parse($this->class_date->format('Y-m-d').' '.$this->start_time);
+        return Carbon::parse($this->class_date->format('Y-m-d').' '.$this->start_time->format('H:i:s'));
     }
 
     public function getEndsAtAttribute(): Carbon
     {
-        return Carbon::parse($this->class_date->format('Y-m-d').' '.$this->end_time);
+        return Carbon::parse($this->class_date->format('Y-m-d').' '.$this->end_time->format('H:i:s'));
     }
 
     public function hasStarted(): bool
