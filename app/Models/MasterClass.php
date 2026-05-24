@@ -57,12 +57,11 @@ class MasterClass extends Model
 
     public function getScheduleLabelAttribute(): string
     {
-        return sprintf(
-            '%s, %s-%s',
-            $this->class_date->format('d.m.Y'),
-            $this->start_time->format('H:i'),
-            $this->end_time->format('H:i')
-        );
+        $classDate = Carbon::parse($this->class_date)->format('d.m.Y');
+        $startTime = Carbon::parse($this->start_time)->format('H:i');
+        $endTime = Carbon::parse($this->end_time)->format('H:i');
+
+        return sprintf('%s, %s-%s', $classDate, $startTime, $endTime);
     }
 
     public function getAvailablePlacesAttribute(): int
@@ -72,12 +71,12 @@ class MasterClass extends Model
 
     public function getStartsAtAttribute(): Carbon
     {
-        return Carbon::parse($this->class_date->format('Y-m-d').' '.$this->start_time->format('H:i:s'));
+        return Carbon::parse($this->class_date.' '.$this->start_time);
     }
 
     public function getEndsAtAttribute(): Carbon
     {
-        return Carbon::parse($this->class_date->format('Y-m-d').' '.$this->end_time->format('H:i:s'));
+        return Carbon::parse($this->class_date.' '.$this->end_time);
     }
 
     public function hasStarted(): bool
