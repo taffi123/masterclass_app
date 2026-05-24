@@ -11,6 +11,8 @@ class HomeController extends Controller
 {
     public function index(): View
     {
+        $name="test";
+        
         $types = CreativityType::query()
             ->withCount('masterClasses')
             ->orderBy('name')
