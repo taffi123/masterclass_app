@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\MasterClass;
 use Carbon\Carbon;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class MasterClassTest extends TestCase
 {
