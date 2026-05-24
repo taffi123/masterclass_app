@@ -7,4 +7,3 @@ parameters:
         - app
         - routes
         - database/seeders
-    checkMissingIterableValueType: false
