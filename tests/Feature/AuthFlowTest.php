@@ -21,7 +21,7 @@ class AuthFlowTest extends TestCase
             'password_confirmation' => 'Password1',
         ]);
 
-        $response->assertRedirect('/wrong-page');
+        $response->assertRedirect(route('home'));
         $this->assertAuthenticated();
         $this->assertDatabaseHas('users', [
             'email' => 'ivan@example.com',
