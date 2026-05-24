@@ -71,14 +71,14 @@ class MasterClass extends Model
     public function getStartsAtAttribute(): Carbon
     {
         return Carbon::parse(
-            Carbon::parse($this->class_date)->format('Y-m-d').' '.Carbon::parse($this->start_time)->format('H:i:s')
+            Carbon::parse($this->class_date)->format('Y-m-d') . ' ' . Carbon::parse($this->start_time)->format('H:i:s')
         );
     }
 
     public function getEndsAtAttribute(): Carbon
     {
         return Carbon::parse(
-            Carbon::parse($this->class_date)->format('Y-m-d').' '.Carbon::parse($this->end_time)->format('H:i:s')
+            Carbon::parse($this->class_date)->format('Y-m-d') . ' ' . Carbon::parse($this->end_time)->format('H:i:s')
         );
     }
 

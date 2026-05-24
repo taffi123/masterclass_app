@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\CreativityType;
-use App\Models\MasterClass;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
