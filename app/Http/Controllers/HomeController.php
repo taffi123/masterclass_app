@@ -44,16 +44,10 @@ class HomeController extends Controller
         }
 
         $masterClasses = $query->get()
-            ->sort(function (MasterClass $left, MasterClass $right): int {
-                $leftStatus = $left->hasStarted() ? 1 : 0;
-                $rightStatus = $right->hasStarted() ? 1 : 0;
-
-                if ($leftStatus !== $rightStatus) {
-                    return $leftStatus <=> $rightStatus;
-                }
-
-                return $left->starts_at->getTimestamp() <=> $right->starts_at->getTimestamp();
-            })
+            ->sortBy([
+                fn ($masterClass): int => $masterClass->hasStarted() ? 1 : 0,
+                fn ($masterClass): int => $masterClass->starts_at->getTimestamp(),
+            ])
             ->values();
 
         return view('category', compact('type', 'masterClasses'));
