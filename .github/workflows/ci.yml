@@ -36,6 +36,14 @@ jobs:
       - name: Run migrations
         run: php artisan migrate --force
 
+      - name: Prepare Laravel directories
+        run: |
+          mkdir -p storage/framework/cache
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p bootstrap/cache
+          chmod -R 777 storage bootstrap/cache
+
       - name: Run Laravel tests and enforce 50% coverage
         run: php artisan test --coverage --min=50
 
