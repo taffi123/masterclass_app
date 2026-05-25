@@ -4,9 +4,9 @@
 
 Пайплайн проверяет Laravel-приложение при каждом `push` и `pull_request` в долгоживущие ветки:
 
-- `develop` / `dev`
-- `uat` / `qa`
-- `main` / `master`
+- `develop`
+- `uat`
+- `main`
 
 Конфигурация находится в `.github/workflows/ci.yml`.
 
